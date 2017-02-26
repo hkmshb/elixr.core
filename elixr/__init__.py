@@ -9,4 +9,4 @@ __version__ = '0.1'
 
 
 # expose significant functions and classes defined within the core module
-from .core import AttrDict
+from .core import AttrDict, Coordinates, CoordinatesLite

@@ -31,7 +31,7 @@ setup(
     packages=find_packages(),
     platforms='any',
     install_requires=requires,
-    extra_requires={ 'testing': tests_requires },
+    extras_require={ 'testing': tests_requires },
     classifiers=[
         'Development Status :: *',
         'Intended Audience :: Developers',

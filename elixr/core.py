@@ -1,7 +1,8 @@
 """Defines core functions an classes.
 """
-
 import os
+from collections import namedtuple
+
 
 
 class AttrDict(dict):
@@ -44,3 +45,32 @@ class AttrDict(dict):
                 for k in d.keys()
         })
         return _make(obj)
+
+
+class CoordinatesLite(namedtuple('CoordinatesLite', 'lng lat')):
+    """Defines a lite version of a structure which makes it easy storing gps
+    coordinates.
+    """
+    def __new__(cls, lng, lat):
+        if lng == None: raise ValueError('lng required')
+        if lat == None: raise ValueError('lat required')
+        return super(CoordinatesLite, cls).__new__(
+            cls, float(lng), float(lat)
+        )
+
+
+class Coordinates(namedtuple('Coordinates', 'lng lat alt error')):
+    """Defines a structure which makes it easy storing gps coordinates.
+    """
+    def __new__(cls, lng, lat, alt=None, error=None):
+        if lng == None: raise ValueError('lng required')
+        if lat == None: raise ValueError('lat required')
+        return super(Coordinates, cls).__new__(
+            cls, float(lng), float(lat), 
+            float(alt) if alt != None else alt, 
+            int(error) if error != None else error
+        )
+    
+    @property
+    def lite(self):
+        return CoordinatesLite(self.lng, self.lat)
