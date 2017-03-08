@@ -1,5 +1,5 @@
 import pytest
-from elixr import AttrDict, Coordinates
+from elixr.core import AttrDict, Coordinates
 
 
 

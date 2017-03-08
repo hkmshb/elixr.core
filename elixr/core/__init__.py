@@ -1,10 +1,37 @@
-"""Defines core functions an classes.
+"""A collection of general purpose utility functions and classes that can be 
+used within scripts and web applications.
+
+Copyright (c) 2017, Hazeltek Solutions.
 """
+## meta data
+__author__  = 'Hazeltek Solutions'
+__version__ = '0.2'
+
+
+## imports
 import os
+import binascii
 from collections import namedtuple
 
 
+#+============================================================================+
+#| core functions
+#+============================================================================+
+def generate_random_digest(num_bytes=28, urandom=None, to_hex=None):
+    """Generates a random hash and returns the hex digest.
+    """
+    if urandom is None:
+        urandom = os.urandom
+    if to_hex is None:
+        to_hex = binascii.hexlify
+    
+    rvalues = urandom(num_bytes)
+    return to_hex(rvalues)
 
+
+#+============================================================================+
+#| core classes
+#+============================================================================+
 class AttrDict(dict):
     """Represents a dictionary object whose elements can be accessed and set 
     using the dot object notation. Thus in addition to `foo['bar']`, `foo.bar`

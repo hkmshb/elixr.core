@@ -1,5 +1,5 @@
 import os
-import elixr
+import elixr.core
 from setuptools import setup, find_packages
 
 
@@ -17,16 +17,16 @@ tests_requires = [
 ]
 
 setup(
-    name='elixr',
-    version=elixr.__version__,
+    name='elixr.core',
+    version=elixr.core.__version__,
     description='A python general purpose utility library',
     long_description=README + '\n\n' + CHANGES,
-    author=elixr.__author__,
+    author=elixr.core.__author__,
     author_email='info@hazeltek.com',
     maintainer='Abdul-Hakeem Shaibu',
     maintainer_email='hkmshb@gmail.com',
-    url='https://bitbucket.org/hkmshb/elixr',
-    keywords='elixr, hazeltek elixr',
+    url='https://bitbucket.org/hkmshb/elixr.core',
+    keywords='elixr.core, hazeltek elixr.core',
     zip_safe=False,
     packages=find_packages(),
     platforms='any',
